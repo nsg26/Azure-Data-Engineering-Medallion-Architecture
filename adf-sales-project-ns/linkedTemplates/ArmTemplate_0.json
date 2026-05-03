@@ -234,7 +234,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "copy_sales_to_bronze",
+						"name": "copy_sales_to_bronze_1st",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -303,7 +303,7 @@
 						"type": "Copy",
 						"dependsOn": [
 							{
-								"activity": "copy_sales_to_bronze",
+								"activity": "copy_sales_to_bronze_1st",
 								"dependencyConditions": [
 									"Completed"
 								]
