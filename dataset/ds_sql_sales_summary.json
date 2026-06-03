@@ -1,0 +1,26 @@
+{
+	"name": "ds_sql_sales_summary",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "region",
+				"type": "varchar"
+			},
+			{
+				"name": "total_sales",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "sales_summary"
+		}
+	}
+}

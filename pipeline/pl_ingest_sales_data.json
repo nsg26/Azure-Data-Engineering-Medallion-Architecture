@@ -382,15 +382,9 @@
 						}
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
-						}
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -403,9 +397,9 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Region",
+									"name": "region",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -415,8 +409,9 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "total_Sales",
-									"physicalType": "String"
+									"name": "total_sales",
+									"type": "Double",
+									"physicalType": "float"
 								}
 							}
 						],
@@ -435,7 +430,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "ds_sales_gold",
+						"referenceName": "ds_sql_sales_summary",
 						"type": "DatasetReference"
 					}
 				]
