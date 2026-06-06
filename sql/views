@@ -1,0 +1,13 @@
+CREATE VIEW vw_region_sales AS
+SELECT
+    region,
+    SUM(total_sales) AS total_sales
+FROM sales_summary
+GROUP BY region;
+
+CREATE VIEW vw_sales_kpi AS
+SELECT
+    COUNT(*) AS total_records,
+    SUM(total_sales) AS total_revenue,
+    AVG(total_sales) AS avg_sales
+FROM sales_summary;
