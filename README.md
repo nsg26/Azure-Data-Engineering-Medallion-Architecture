@@ -1,4 +1,4 @@
-# Azure Data Engineering Project – Medallion Architecture using Azure Data Factory, ADLS Gen2 & Azure SQL Database
+# End-to-End Azure Data Engineering Project – Medallion Architecture
 
 ## Project Overview
 
