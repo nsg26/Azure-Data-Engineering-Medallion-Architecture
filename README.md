@@ -1,10 +1,12 @@
-# Azure Data Engineering Project – Medallion Architecture (Bronze, Silver, Gold)
+# Azure Data Engineering Project – Medallion Architecture using Azure Data Factory, ADLS Gen2 & Azure SQL Database
 
 ## Project Overview
 
-This project demonstrates an end-to-end Azure Data Engineering solution using the Medallion Architecture (Bronze, Silver, Gold) pattern.
+This project demonstrates an end-to-end Azure Data Engineering solution implementing the Medallion Architecture (Bronze, Silver, Gold) pattern.
 
-The solution ingests raw sales data from CSV files, stores the data in Azure Data Lake Storage Gen2, processes it through Bronze and Silver layers using Azure Data Factory, loads curated Gold layer data into Azure SQL Database, and finally generates business insights using SQL views and Power BI dashboards.
+The solution ingests raw sales data from CSV files using Azure Data Factory and stores it in Azure Data Lake Storage Gen2. The data is processed through Bronze (raw) and Silver (cleaned) layers before being loaded into Azure SQL Database, which serves as the Gold analytical layer for reporting and business insights.
+
+SQL views are created on top of the curated data to support analytics, and Power BI is used to visualize key business metrics and trends.
 
 The project showcases core Azure Data Engineering concepts including data ingestion, orchestration, parameterization, cloud storage, secret management, SQL analytics, reporting, and source control integration.
 
@@ -27,11 +29,8 @@ Silver Layer (Cleaned Data)
 Azure Data Lake Storage Gen2
         │
         ▼
-Gold Layer (Curated Data)
-Azure Data Lake Storage Gen2
-        │
-        ▼
 Azure SQL Database
+(Gold / Curated Data Layer)
         │
         ▼
 SQL Analytics & Views
@@ -49,6 +48,7 @@ The objective of this project is to build a scalable cloud-based data pipeline t
 - Ingests sales data from source files.
 - Stores raw data for traceability.
 - Processes and organizes data into Medallion layers.
+- Uses Azure SQL Database as the Gold consumption layer for analytics and reporting.
 - Loads business-ready data into a relational database.
 - Generates analytical insights through SQL.
 - Visualizes key business metrics using Power BI.
@@ -91,7 +91,6 @@ Containers/Folders:
 ```plaintext
 bronze/
 silver/
-gold/
 ```
 
 ---
@@ -100,10 +99,12 @@ gold/
 
 Purpose:
 
-- Store curated Gold layer data
+- Act as the Gold data layer
+- Store curated business-ready data
 - Perform analytical queries
 - Create reporting views
-
+- Support Power BI reporting
+  
 ---
 
 ## Azure Key Vault
@@ -195,22 +196,29 @@ Silver Layer
 
 Purpose:
 
-Store business-ready curated data.
+Store business-ready curated data for analytics and reporting.
+
+Implementation:
+
+In this project, Azure SQL Database serves as the Gold layer where curated data is loaded from the Silver layer for downstream analytics and dashboarding.
 
 Characteristics:
 
 - Analytics-ready
 - Reporting-ready
-- Optimized for consumption
+- Optimized for SQL querying
+- Consumed by Power BI dashboards
 
 Flow:
 
 ```plaintext
 Silver Layer
       ↓
-Gold Layer
+Azure SQL Database (Gold Layer)
       ↓
-Azure SQL Database
+SQL Views & Analytics
+      ↓
+Power BI Dashboard
 ```
 
 ---
