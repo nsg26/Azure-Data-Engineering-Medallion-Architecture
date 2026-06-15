@@ -14,30 +14,9 @@ The project showcases core Azure Data Engineering concepts including data ingest
 
 ## Architecture
 
-```plaintext
-Source CSV Files
-        │
-        ▼
-Azure Data Factory
-        │
-        ▼
-Bronze Layer (Raw Data)
-Azure Data Lake Storage Gen2
-        │
-        ▼
-Silver Layer (Cleaned Data)
-Azure Data Lake Storage Gen2
-        │
-        ▼
-Azure SQL Database
-(Gold / Curated Data Layer)
-        │
-        ▼
-SQL Analytics & Views
-        │
-        ▼
-Power BI Dashboard
-```
+![Architecture Diagram](images/azure_architecture.png)
+
+The solution uses Azure Data Factory for orchestration and data movement, Azure Data Lake Storage Gen2 for Bronze and Silver layers, Azure SQL Database as the Gold analytical layer, Azure Key Vault for secure credential management, and Power BI for reporting and visualization.
 
 ---
 
@@ -76,6 +55,10 @@ Features implemented:
 - Debug Runs
 - Publish Process
 - Git Integration
+
+### Pipeline Implementation
+
+![ADF Pipeline](images/pipeline.png)
 
 ---
 
@@ -306,6 +289,10 @@ Purpose:
 
 Generate region-wise revenue analysis.
 
+### Regional Sales Analysis
+
+![SQL Output](images/sql_output.png)
+
 ---
 
 ## View 2: Sales KPI Summary
@@ -322,6 +309,10 @@ FROM sales_summary;
 Purpose:
 
 Generate key business metrics.
+
+### Sales KPI Analysis
+
+![SQL Output](images/sql_kpi_output.png)
 
 ---
 
@@ -374,6 +365,8 @@ Dashboard Components:
 Purpose:
 
 Provide business users with an interactive view of sales performance.
+
+![Power BI Dashboard](images/dashboard.png)
 
 ---
 
